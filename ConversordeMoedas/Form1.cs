@@ -14,34 +14,53 @@ namespace ConversordeMoedas
 
         private void button1_Click(object sender, EventArgs e)
         {
-            double valor, valoreal, euro, dolar;
+            double valor, valormoeda, euro, dolar, iene, libra;
 
             euro = 6.16;
             dolar = 5.52;
-            string moeda = textBox2.Text;
-            valor = double.Parse(textBox1.Text);
+            iene = 0.048;
+            libra = 7.20;
 
-            if (moeda.ToLower() == "euro")
+            valor = double.Parse(textBox1.Text);
+            string moeda = comboBox1.SelectedItem.ToString();
+
+            if (moeda == "Euro")
             {
-                valoreal = valor * euro;
-                textBox3.Text = valoreal.ToString("C");
-            } else if(moeda.ToLower() == "dolar")
+                valormoeda = valor * euro;
+            }
+            else if (moeda == "Dolar")
             {
-                valoreal = valor * dolar;
-                textBox3.Text = valoreal.ToString("C");
+                valormoeda = valor * dolar;
+            }
+            else if (moeda == "Libra")
+            {
+                valormoeda = valor * libra;
+            }
+            else if (moeda == "Iene")
+            {
+                valormoeda = valor * iene;
             }
             else
             {
-                MessageBox.Show("Moeda invalida, insira Euro ou Dolar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBox3.Text = string.Empty;
+                MessageBox.Show("Moeda inválida!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-
-
+            textBox3.Text = valormoeda.ToString("N2");
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-        
+
+
+        }
+
+        private void Form1_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }
